@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %} 大家说 {% endblock %}
+
+
+{% block body %}
+
+       <style text="css">
+        body {
+            background-color: #e5e5e5
+        }
+
+        .div_block {
+            width: 100%;
+            margin: 30px auto;
+            border: 1px lightgray solid;
+            background-color: white;
+            border-top: 5px solid #428bca;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
+
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1" id="topics_div">
+           </div>
+        </div>
+
+    <script>
+                     $.getJSON('/topic/get/all', function (data) {
+                      var items = data.topics;
+                      for (var i = 0; i < items.length; ++i) {
+                           topic = items[i]
+                      $("#topics_div").append(
+                              '<div class="div_block">' +
+                              '<h1 style=" text-align: center;">'+topic.title+'</h1>' +
+                              '<hr>' +
+                              '<p class="lead" >' +topic.description +'</p>' +
+                              '<hr>' +
+                              '<p style="text-align: center">' +
+                              '<a href="/djs/topic/'+topic._id+'">查看详情</a>' +
+                              '</p>' +
+                              '</div>'
+                      )
+                      }
+                     });
+
+    </script>
+
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %} 个人中心 {% endblock %}
+
+{% block body %}
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for("static",filename='css/dashboard.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for("static",filename='css/grzx.css') }}">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="#sy" data-toggle="tab">首页</a></li>
+                    <li><a href="#fbht" data-toggle="tab">发布话题</a></li>
+                    <li><a href="#wdfb" data-toggle="tab">我的发布</a></li>
+                    <li><a href="#wdpl" data-toggle="tab">我的评论</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div class="row ">
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade in active" id="sy">
+                            <p class="text-primary" style="font-size: larger;font-weight: 700">
+                                尊敬的 <span id="welcome_username"></span> ,欢迎您来到个人中心</p>
+                            <img src="../static/img/top_bg.jpg" style="width: 80%;margin:0 auto">
+                        </div>
+                        <div class="tab-pane fade in " id="fbht">
+                            <div class="col-md-9 col-md-offset-1">
+                                <div class="div_block">
+                                    <h3>发布话题</h3>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2">
+                                                <label class="div_block_row_label">话题名称: </label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <input class="div_block_row_input" id="title" maxlength="40"
+                                                       placeholder=" 请输入话题名称(最多40个字)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2">
+                                                <label class="div_block_row_label">话题描述: </label>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <textarea class="div_block_row_textarea "
+                                                          placeholder=" 请输入话题描述(最多300个字)" maxlength="300" rows="8"
+                                                          cols="20" id="description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p>
+                                        <button type="submit" class="btn btn-info" onclick="add_topic()">发布话题</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in " id="wdfb">
+                            <div class="row" style="margin-top: -10px">
+                                <div class="col-md-10 col-md-offset-1" id="topics_div">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in " id="wdpl" style="margin-top: -10px">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1" id="comments_div"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="{{ url_for("static",filename='js/p2p/grzx.js') }}"></script>
+{% endblock %}

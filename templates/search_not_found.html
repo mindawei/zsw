@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}未找到 {% endblock %}
+
+{% block body %}
+
+    <div class="container" style="margin-top: 90px;">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img src="{{ url_for("static",filename='img/not_found.jpg') }}">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

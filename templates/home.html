@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>择善网</title>
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for("static",filename='css/bootstrap.min.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for("static",filename='css/bootstrap-theme.min.css') }}">
+    <!-- jQuery在bootstrap.min.js -->
+    <script src="{{ url_for("static",filename='js/jquery-1.12.1.min.js') }}"></script>
+    <script src="{{ url_for("static",filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for("static",filename='js/jquery.cookie.js') }}"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner ">
+                    <h2 class="masthead-brand ">择善网</h2>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="#">首 页</a></li>
+                            <li><a href="/djs">大家说</a></li>
+                            <li><a href="/kzx">看资讯</a></li>
+                            <li><a href="/cpt">查平台</a></li>
+                            <li><a href="/xtz">想投资</a></li>
+                            <li id="grzx" class="hidden"><a href="/grzx">个人中心</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <img src="../static/img/logo_blue.png" style="width: 90px;"><img src="../static/img/logo.png"
+                                                                                 style="width: 60px;">
+                <br>
+                <h1 class="cover-heading ">规避P2P网贷投资风险，择善而投！</h1>
+                <br>
+                <p class="lead">
+                    <a href="/sign_in" class="btn btn-lg "
+                       style="padding-left: 35px;padding-right: 35px;color:white;background-color:transparent;border:1px solid white">
+                        登 录 </a>
+                    <a href="/register" class="btn btn-lg "
+                       style="padding-left: 35px;padding-right: 35px;color:white;background-color:transparent;border:1px solid white">
+                        注 册 </a>
+                </p>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <h5 style="color:white">昆仑开发团队  版权所有 | 浙ICP备16020026号-1</h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="{{ url_for("static",filename='js/p2p/home.js') }}"></script>
+
+</html>

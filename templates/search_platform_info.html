@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+
+{% block title %} 平台详情 {% endblock %}
+
+{% block body %}
+    <link type="text/css" rel="stylesheet" href="{{ url_for("static",filename='css/search_platform_info.css') }}">
+
+    <div class="container" style="margin-top: 80px">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 ">
+
+                <a class="list-group-item "
+                   style="background-image: url('../static/img/bg_search_info.jpg');border: none">
+                    <div class="row">
+                        <div class="col-md-10 ">
+                            <img id="platLogo" class="img-responsive"
+                                 src="{{ url_for("static",filename='img/detail.png') }}"
+                                 style="width:38px;height:38px;float:left">
+                            <span id="platform_name"
+                                  style="font-size:28px;float:left;margin-left: 10px;color: white">{{ platform_name }}</span>
+                        </div>
+                    </div>
+                </a>
+
+                <div>
+                    <ul class="nav  nav-tabs nav-justified bg-success " role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#jbxx" aria-controls="home" role="tab" data-toggle="tab">平台介绍</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#yygs" aria-controls="profile" role="tab" data-toggle="tab">公司信息</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#yhdp" aria-controls="profile" role="tab" data-toggle="tab">平台口碑</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#xgzx" aria-controls="profile" role="tab" data-toggle="tab">相关资讯</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="jbxx" style="background-color: white">
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">平均收益 :</span>&nbsp;&nbsp;<span
+                                    id="platform_earn"></span>%
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">上线时间 :</span>&nbsp;&nbsp;<span
+                                    id="platform_time"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">注册资本 :</span>&nbsp;&nbsp;<span
+                                    id="platform_volume"></span>万
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">所在地区 :</span>&nbsp;&nbsp;<span
+                                    id="platform_need_return"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">投资期限 :</span>&nbsp;&nbsp;<span
+                                    id="platform_borrowing_period"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-top: none;border-bottom: none">
+                                <span class="text-primary">平台网址 :</span>&nbsp;&nbsp;<span id="platform_platUrl"></span>
+                            </a>
+
+                            <div id="chart_dropdown" class="dropdown"
+                                 style="border:1px solid lightgrey;border-top: none;border-bottom: none">
+                                <button class="btn" id="dropdownMenu1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+
+                                        style="margin-left: 15px;margin-top: 15px;padding-left: 15px;padding-right: 15px;background-color:transparent;border:1px solid lightgrey">
+                                    <span id="show_chart_title"> 利率信息</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a onclick="show_chart('chart_div', '利率信息', '0','x','y1', '百分比(%)')">利率信息</a>
+                                    </li>
+                                    <li><a onclick="show_chart('chart_div', '成交量信息', '0','x','y2', '成交量(万)')">成交量信息</a>
+                                    </li>
+                                    <li><a onclick="show_chart('chart_div', '待还款信息', '1','x','y1', '代还款(万)')">待还款信息</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="show_chart('chart_div', '资金净流入', '1','x','y2', '净流入资金(万)')">资金净流入</a>
+                                    </li>
+                                    <li><a onclick=" show_chart('chart_div', '投资人数', '2','x', 'y1', '投资人数(人)')">投资人数</a>
+                                    </li>
+                                    <li><a onclick="show_chart('chart_div', '借款人数', '2','x','y2', '借款人数(人)')">借款人数</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="chart_div"
+                                 style="width:100%;height:350px;margin: 0 auto;border:1px solid lightgrey;border-top: none"></div>
+
+
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="yygs">
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">公司名称 :</span>&nbsp;&nbsp;<span id="qiyemingcheng"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">成立时间 :</span>&nbsp;&nbsp;<span id="kaiyeriqi"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">登记监管 :</span>&nbsp;&nbsp;<span id="dengjijiguan"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">联系地址 :</span>&nbsp;&nbsp;<span id="lianxidizhi"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">联系电话 :</span>&nbsp;&nbsp;<span id="400"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">企业法人 :</span>&nbsp;&nbsp;<span id="qiyefaren"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-bottom: none;border-top: none;">
+                                <span class="text-primary">公司类型 :</span>&nbsp;&nbsp;<span id="gongsileixing"></span>
+                            </a>
+                            <a class="list-group-item list-group-item " style="border-top: none;line-height: 200%">
+                                <span class="text-primary">公司简介 :</span>&nbsp;&nbsp;<span id="ptjianjie"></span>
+                            </a>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="xgzx">
+                            <div id="related_news_div" class="list-group" style="margin-top: -1px;"></div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="yhdp">
+                            </a>
+                            <div id="reviews_label" class="panel-body" style="border: 1px lightgrey solid;border-bottom: none;border-top: none;background-color: white"></div>
+                            <div id="reviews_div" class="list-group"></div>
+                            <div><ul id="pages" class="pagination" style="padding: 0 0 0 0;margin:  0 0 0 0;"></ul></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <script src="{{ url_for("static",filename='js/echarts-all-2.2.7.js') }}"></script>
+    <script src="{{ url_for("static",filename='js/p2p/platform.js') }}"></script>
+{% endblock %}

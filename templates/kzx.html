@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %} 看资讯 {% endblock %}
+
+{% block body %}
+    <link type="text/css" rel="stylesheet" href="{{ url_for("static",filename='css/dashboard.css') }}">
+<style>
+ body {
+            background-color: #e5e5e5
+        }
+</style>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="#huizong" data-toggle="tab">资讯汇总</a></li>
+                    <li><a href="#info_type_show" data-toggle="tab" onclick="info_type_show('news')">新闻中心（227）</a></li>
+                    <li><a href="#info_type_show" data-toggle="tab" onclick="info_type_show('policy')">政策园地（23）</a></li>
+                    <li><a href="#info_type_show" data-toggle="tab" onclick="info_type_show('opinion')">百家观点（35）</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="huizong">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div id="show_xw" class="list-group">
+                                    <a class="list-group-item list-group-item-heading list-group-item-danger">
+                                        <span class="glyphicon glyphicon-hand-right"></span>&nbsp&nbsp新闻中心
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div id="show_zc" class="list-group">
+                                    <a class="list-group-item list-group-item-heading list-group-item-warning">
+                                        <span class="glyphicon glyphicon-hand-right"></span>&nbsp&nbsp政策园地
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div id="show_gd" class="list-group">
+                                    <a class="list-group-item list-group-item-heading list-group-item-success">
+                                        <span class="glyphicon glyphicon-hand-right"></span>&nbsp&nbsp百家观点
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade in" id="info_type_show">
+                        <div class="row">
+                            <div class="col-md-12">
+                                 <div id="show" class="list-group"></div>
+                                <ul id="pages" class="pagination" style="margin-top: 0px"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for("static",filename='js/p2p/kzx.js') }}"></script>
+
+{% endblock %}

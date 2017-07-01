@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+
+{% block title %} 大家说话题 {% endblock %}
+
+
+{% block body %}
+
+
+    <style text="css">
+        body {
+            background-color: #e5e5e5
+        }
+
+        .div_block {
+            width: 100%;
+            margin: 20px auto;
+            border: 1px lightgray solid;
+            background-color: white;
+            border-top: 5px solid #428bca;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+            .div_block_comment {
+            width: 100%;
+            margin: 10px auto;
+            border: 1px lightgray solid;
+            background-color: white;
+            padding-left: 20px;
+            padding-right: 20px;
+                padding-top: 20px;
+        }
+
+    .div_block_row_textarea {
+            width: 100%;
+            max-width: 100%;
+        }
+
+
+    </style>
+
+
+
+    <div class="container" style="margin-top: 60px">
+
+         <span class="hidden" id="topic_id">{{ topic_id }}</span>
+
+        <div class="row">
+
+            <div class="col-md-10 col-md-offset-1">
+                 <div id="topics_div">
+
+                 </div>
+
+              <div id="comments">
+
+              </div>
+
+
+                    <div class="div_block_comment hidden" id="already_login" >
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                                <textarea class="div_block_row_textarea " placeholder=" 请输入评论内容(最多1000个字)" maxlength="1000" rows="6" cols="20" id="comment_content"></textarea>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <button type="submit" class="btn btn-info" onclick="add_comment()">发布评论</button>
+                                    </p>
+
+                  </div>
+
+                      <div class="div_block_comment hidden" id="not_login" >
+
+                                   <p class="lead">
+                                       登录后可以评论,
+                    <a href="/sign_in">
+                        去登录 </a>或<a href="/register" >
+                        去注册 </a>。
+                </p>
+
+                  </div>
+
+
+                              <script>
+                                         username = $.cookie('username')
+                                         if(username==null){
+                                             $("#not_login").removeClass("hidden")
+                                         }else{
+                                             $("#already_login").removeClass("hidden")
+                                         }
+
+
+                                        function add_comment() {
+                                            var topic_id = $('#topic_id').text();
+                                            var content = $('#comment_content')[0].value;
+                                            username = $.cookie('username')
+
+                                            if (content.length == 0) {
+                                                my_alert("请输入评论！")
+                                                return;
+                                            }
+
+                                            var url = '/comment/add/username=' + username + '&topic_id=' + topic_id + '&content=' + content;
+                                            $.getJSON(url, function (data) {
+                                                if (data.result == 1) {
+                                                    my_alert("评论成功！2秒后自动刷新页面...");
+                                                    window.setTimeout(function(){ location.href = "/djs/topic/"+topic_id; },2500)
+                                                }
+                                            });
+
+                                        }
+                                    </script>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+                    var topic_id = $("#topic_id").text();
+                     $.getJSON('/topic/get/one/'+topic_id, function (data) {
+                      var topic = data.topic;
+                      $("#topics_div").append(
+                              '<div class="div_block">' +
+                              '<h1 style=" text-align: center;">'+topic.title+'</h1>' +
+                              '<hr>' +
+                              '<p class="lead" >' +topic.description +'</p>' +
+                              '</div>'
+                      )
+                     });
+
+                     $.getJSON('/topic/get/comments/'+topic_id, function (data) {
+
+                         var comments = data.comments;
+
+                         for(var i=0;i<comments.length;++i){
+                             var comment = comments[i]
+                             $("#comments").append(
+                                     '<div class="div_block_comment">' +
+                                     '<p >' +
+                                     '<span>'+comment.username+'</span>&nbsp;&nbsp;' +
+                                     '<span>'+comment.create_time+'</span></p>' +
+                                     '<p class="lead">' +
+                                        comment.content+
+                                     '</p>' +
+                                     '</div>'
+                             )
+                         }
+
+                     });
+
+
+
+
+
+
+    </script>
+
+
+
+{% endblock %}

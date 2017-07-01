@@ -1,0 +1,38 @@
+body {
+    background-color: #e5e5e5
+}
+
+.div_block {
+    margin: 20px auto;
+    border: 1px lightgray solid;
+    text-align: center;
+    background-color: white;
+    border-top: 5px solid #428bca
+}
+
+.topic_div_block {
+    width: 100%;
+    margin: 30px auto;
+    border: 1px lightgray solid;
+    background-color: white;
+    border-top: 5px solid #428bca;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.div_block_row_label {
+    height: 35px;
+
+    font-size: larger;
+}
+
+.div_block_row_input {
+    height: 35px;
+    width: 100%;
+
+}
+
+.div_block_row_textarea {
+    width: 100%;
+    max-width: 100%;
+}

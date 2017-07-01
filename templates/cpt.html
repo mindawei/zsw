@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %} 查平台 {% endblock %}
+
+{% block body %}
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for("static",filename='css/cpt.css') }}">
+
+    <div class="container" style="margin-top: 160px;">
+
+        <div style="text-align: center"><img src="{{ url_for("static",filename='img/search_logo.png') }}"></div>
+
+        <div class="input-group" style="width: 500px;margin: 25px auto;">
+            <input id="search_key" type="text" class="form-control" placeholder="请输入平台名称(支持：陆金所、宜人贷等平台)"
+                   style="height: 40px">
+                     <span class="input-group-btn">
+                         <button id="search_btn" class="btn btn-success" type="button" style="height: 40px">关于一下
+                         </button>
+                      </span>
+        </div>
+
+    </div>
+    
+    <script src="{{ url_for("static",filename='js/p2p/cpt.js') }}"></script>
+
+{% endblock %}

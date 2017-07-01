@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %} 资讯详情 {% endblock %}
+
+{% block body %}
+
+    <div class="container" style="margin-top: 70px">
+        <ol class="breadcrumb col-sm-10 col-sm-offset-1">
+            <li><a href="/kzx">看资讯</a></li>
+            <li class="active" id="type">{{ data_info.type }}</li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="jumbotron">
+                    <h2 id="title">{{ data_info.title }}</h2>
+                    <hr>
+                    <p>
+                        <span id="date">{{ data_info.item_pub_time }}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="author">{{ data_info.author }}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a id="url" href="{{ data_info.url }}" target="_blank">{{ data_info.url }}</a>
+                    </p>
+                    <hr>
+                    <p id="content" style="margin-top: 0px;line-height: 150%;">{{ data_info.content }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for("static",filename='js/p2p/kzx_detail.js') }}"></script>
+{% endblock %}

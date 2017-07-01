@@ -1,0 +1,12 @@
+body {
+    background-color: #e5e5e5
+}
+
+.div_block {
+    width: 90%;
+    margin: 10px auto;
+    border: 1px lightgray solid;
+    text-align: center;
+    background-color: white;
+    border-top: 5px solid #f0ad4e
+}
